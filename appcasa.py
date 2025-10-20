@@ -70,3 +70,18 @@ if st.button("Mostrar viviendas filtradas"):
         f"🔎 Se encontraron {len(df_filtrado)} viviendas que cumplen con tus criterios.")
 else:
     st.write("🛠️ La aplicación está en construcción. Ajusta los filtros y haz clic en los botones para explorar.")
+
+# Gráfico de caja de precio por m²
+df['precio_m2'] = df['precio_(eur)'] / df['superficie_(m2)']
+fig_box = px.box(df, x="ciudad", y="precio_m2", color="tipo",
+                 title="Distribución de precio por m²")
+st.plotly_chart(fig_box)
+
+# Para comparar el precio promedio por m² entre ciudades o tipos de vivienda.
+st.write("Comparación de precio promedio por m² entre ciudades y tipos de vivienda:")
+precio_medio = df.groupby("ciudad")["precio_m2"].mean().reset_index()
+fig_bar = px.bar(precio_medio, x="ciudad", y="precio_m2",
+                 title="Precio medio por m² por ciudad")
+st.plotly_chart(fig_bar)
+st.write("¡Gracias por usar la aplicación de selección de viviendas!")
+st.write("Desarrollado por Tu Nombre Aquí.")
