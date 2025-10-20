@@ -5,4 +5,4 @@ Set-Location "C:\Users\Acer\OneDrive\Documents\DATA\1 Analista de Data\Repositor
 .\.venv\Scripts\Activate.ps1
 
 # Ejecutar la aplicación
-streamlit run app.py
+streamlit run appcar.py
